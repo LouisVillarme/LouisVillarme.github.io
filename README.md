@@ -1,3 +1,3 @@
 # LouisVillarme.github.io
-# Louis Villarmé
-# Mathieu Rigaudiere
+Louis Villarmé
+Mathieu Rigaudiere
