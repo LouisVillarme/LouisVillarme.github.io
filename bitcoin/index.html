@@ -5,19 +5,19 @@
 		<title> Bitcoin </title>						
 	</head>
 	<script>
-		function WSinfo(url,htmlid){
-			
-		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				var myObj = this.responseText;
-				var jsonPretty = JSON.stringify(JSON.parse(myObj),null,2);
-				document.getElementById("WSinfo").innerHTML = jsonPretty;
-			}
-		};
-		xmlhttp.open("GET", "https://bitcoin.mubiz.com/info", true);
-		xmlhttp.send();
-		
+		function RequeteApi(url,id){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var myObj = this.responseText;
+					var jsonPretty = JSON.stringify(JSON.parse(myObj),null,2);
+					document.getElementById(id).innerHTML = jsonPretty;
+				}
+			};
+			xmlhttp.open("GET", url, true);
+			xmlhttp.send();
+		}
+		RequeteApi("https://bitcoin.mubiz.com/info","WSinfo");
 		var xmlhttp2 = new XMLHttpRequest();
 		xmlhttp2.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
