@@ -17,43 +17,15 @@
 			xmlhttp.open("GET", url, true);
 			xmlhttp.send();
 		}
-		RequeteApi("https://bitcoin.mubiz.com/info","WSinfo");
-		var xmlhttp2 = new XMLHttpRequest();
-		xmlhttp2.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				var myObj2 = this.responseText;
-				var jsonPretty2 = JSON.stringify(JSON.parse(myObj2),null,2);
-				document.getElementById("BlockchainInfo").innerHTML = jsonPretty2;
-			}
-		};
-		xmlhttp2.open("GET", "https://bitcoin.mubiz.com/blockchaininfo", true);
-		xmlhttp2.send();
-		
-		var xmlhttp3 = new XMLHttpRequest();
-		xmlhttp3.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				var myObj3 = this.responseText;
-				var jsonPretty3 = JSON.stringify(JSON.parse(myObj3),null,2);
-				document.getElementById("MiningInfo").innerHTML = jsonPretty3;
-			}
-		};
-		xmlhttp3.open("GET", "https://bitcoin.mubiz.com/mininginfo", true);
-		xmlhttp3.send();
-		
-		var xmlhttp4 = new XMLHttpRequest();
-		xmlhttp4.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				var myObj4 = this.responseText;
-				var jsonPretty4 = JSON.stringify(JSON.parse(myObj4),null,2);
-				document.getElementById("PeerInfo").innerHTML = jsonPretty4;
-			}
-		};
-		xmlhttp4.open("GET", "https://bitcoin.mubiz.com/peerinfo", true);
-		xmlhttp4.send();
-		
+		RequeteApi("https://bitcoin.mubiz.com/info","WsInfo");
+		RequeteApi("https://bitcoin.mubiz.com/blockchaininfo","BlockchainInfo");
+		RequeteApi("https://bitcoin.mubiz.com/mininginfo","MiningInfo");
+		RequeteApi("https://bitcoin.mubiz.com/peerinfo","PeerInfo");
+				
 	</script>
 	<body>
 		<h1>Explorateur Bitcoin</h1>
+		<h3>Données</h3>
 		
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -62,7 +34,7 @@
 			<div class="col-lg-12 col-xs-6">
 			<pre>
 				<h3>WS Info</h3>
-				<code id="WSinfo" class="json kljs"></code>
+				<code id="WsInfo" class="json kljs"></code>
 				<h3>BlockChain Info</h3>
 				<code id="BlockchainInfo" class="json kljs"></code>
 				<h3>Mining Info</h3>
