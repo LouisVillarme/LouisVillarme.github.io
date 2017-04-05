@@ -17,10 +17,13 @@
 			xmlhttp.open("GET", url, true);
 			xmlhttp.send();
 		}
-		RequeteApi("https://bitcoin.mubiz.com/info","WsInfo");
-		RequeteApi("https://bitcoin.mubiz.com/blockchaininfo","BlockchainInfo");
-		RequeteApi("https://bitcoin.mubiz.com/mininginfo","MiningInfo");
-		RequeteApi("https://bitcoin.mubiz.com/peerinfo","PeerInfo");
+		function HomePageLoading(){
+			RequeteApi("https://bitcoin.mubiz.com/info","WsInfo");
+			RequeteApi("https://bitcoin.mubiz.com/blockchaininfo","BlockchainInfo");
+			RequeteApi("https://bitcoin.mubiz.com/mininginfo","MiningInfo");
+			RequeteApi("https://bitcoin.mubiz.com/peerinfo","PeerInfo");
+		}
+		
 				
 	</script>
 	<body>
@@ -30,6 +33,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="../custom.js"></script>
+		<script> type="text/javascript">HomePageLoading();</script>
 		<div class="row">
 			<div class="col-lg-12 col-xs-6">
 			<pre>
