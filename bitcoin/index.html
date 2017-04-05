@@ -15,6 +15,17 @@
 		};
 		xmlhttp.open("GET", "https://bitcoin.mubiz.com/info", true);
 		xmlhttp.send();
+		
+		var xmlhttp2 = new XMLHttpRequest();
+		xmlhttp2.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var myObj2 = this.responseText;
+				var jsonPretty2 = JSON.stringify(JSON.parse(myObj2),null,2);
+				document.getElementById("BlockchainInfo").innerHTML = jsonPretty2;
+			}
+		};
+		xmlhttp2.open("GET", "https://bitcoin.mubiz.com/blockchaininfo", true);
+		xmlhttp2.send();
 	</script>
 	<body>
 		<h1>Explorateur Bitcoin</h1>
@@ -27,6 +38,7 @@
 			<div class="col-lg-12 col-xs-6">
 			<pre>
 				<code id="WSinfo" class="json kljs"></code>
+				<code id="BlockchainInfo" class="json kljs"></code>
 		   	</pre>
 			</div>
 		</div>
