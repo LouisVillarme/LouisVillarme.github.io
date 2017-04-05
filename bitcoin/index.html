@@ -26,6 +26,29 @@
 		};
 		xmlhttp2.open("GET", "https://bitcoin.mubiz.com/blockchaininfo", true);
 		xmlhttp2.send();
+		
+		var xmlhttp3 = new XMLHttpRequest();
+		xmlhttp3.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var myObj3 = this.responseText;
+				var jsonPretty3 = JSON.stringify(JSON.parse(myObj3),null,2);
+				document.getElementById("MiningInfo").innerHTML = jsonPretty3;
+			}
+		};
+		xmlhttp3.open("GET", "https://bitcoin.mubiz.com/mininginfo", true);
+		xmlhttp3.send();
+		
+		var xmlhttp4 = new XMLHttpRequest();
+		xmlhttp4.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var myObj4 = this.responseText;
+				var jsonPretty4 = JSON.stringify(JSON.parse(myObj4),null,2);
+				document.getElementById("PeerInfo").innerHTML = jsonPretty4;
+			}
+		};
+		xmlhttp4.open("GET", "https://bitcoin.mubiz.com/peerinfo", true);
+		xmlhttp4.send();
+		
 	</script>
 	<body>
 		<h1>Explorateur Bitcoin</h1>
@@ -37,9 +60,15 @@
 		<div class="row">
 			<div class="col-lg-12 col-xs-6">
 			<pre>
-				<h3> WS Information</h3>
+				<h3>WS Info</h3>
 				<code id="Bitcoin info" class="json kljs"></code>
+				<h4>BlockChain Info</h4>
 				<code id="BlockchainInfo" class="json kljs"></code>
+				<h5>Mining Info</h5>
+				<code id="MiningInfo" class="json kljs"></code>
+				<h6>Peer Info</h6><
+				code id="PeerInfo" class="json kljs"></code>
+				
 		   	</pre>
 			</div>
 		</div>
