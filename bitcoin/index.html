@@ -5,6 +5,8 @@
 		<title> Bitcoin </title>						
 	</head>
 	<script>
+		function WSinfo(url,htmlid){
+			
 		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
@@ -65,8 +67,8 @@
 				<code id="BlockchainInfo" class="json kljs"></code>
 				<h3>Mining Info</h3>
 				<code id="MiningInfo" class="json kljs"></code>
-				<h3>Peer Info</h3><
-				code id="PeerInfo" class="json kljs"></code>
+				<h3>Peer Info</h3>
+				<code id="PeerInfo" class="json kljs"></code>
 				
 		   	</pre>
 			</div>
