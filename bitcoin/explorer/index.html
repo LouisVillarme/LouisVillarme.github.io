@@ -4,12 +4,123 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 		<title> Accueil </title>						
 	</head>
+	<script>
+		function RequeteApi(url,id){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var myObj = this.responseText;
+					var jsonPretty = JSON.stringify(JSON.parse(myObj),null,2);
+					document.getElementById(id).innerHTML = jsonPretty;
+				}
+			};
+			xmlhttp.open("GET", url, true);
+			xmlhttp.send();
+		}
+		var Bitcoinaddress="";
+		var Hashtransaction="";
+		var Hashbloc="";
+		var Indexbloc="";
+		function update_val1()
+		{
+			Bitcoinaddress=document.getElementById("inputBitcoinAddress").value
+		}
+		function update_val2()
+		{
+			Hashtransaction=document.getElementById("inputHashTransaction").value
+		}
+		function update_val3()
+		{
+			Hashbloc=document.getElementById("inputHashbloc").value
+		}
+		function update_val4()
+		{
+			Indexbloc=document.getElementById("inputIndexbloc").value
+		}
+	</script>
+	
+	
 	<body>
-		<h1>Explorateur Bitcoin</h1><a href="https://louisvillarme.github.io/bitcoin/index.html">Page Bitcoin</a>
+		<h1>Explorateur Bitcoin</h1><a href="https://louisvillarme.github.io/bitcoin/index.html">Retour page Bitcoin</a>
    		<h2>Retour accueil </h2><a href="https://louisvillarme.github.io/index.html">cliquer ici</a>
     
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="../custom.js"></script>
+	
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label for="inputBitcoinAddress" class="col-sm-2 control-label">Bitcoin Address</label>
+			<div class="col-sm-10">
+			<input type="Bitcoin" class="form-control" id="inputBitcoinAddress" onchange="update_val1()" placeholder="Bitcoin Address">
+			<button type="button" class="btn btn-default" onclick =RequeteApi("https://bitcoin.mubiz.com/address/"+Bitcoinaddress+"/","BitAddress")>Afficher le resultat</button>
+			</div>
+		</div>			  
+	</form> 
+	<div class="row">
+			<div class="col-lg-12 col-xs-6">
+			<pre>
+				<h3>Resultat de la requete Bitcoin</h3>
+				<code id="BitAddress" class="json kljs"></code>				
+		   	</pre>
+			</div>
+	</div>
+	
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label for="inputHashTransaction" class="col-sm-2 control-label">Hash de Transaction</label>
+			<div class="col-sm-10">
+			<input type="Transaction" class="form-control" id="inputHashTransaction" onchange="update_val2()" placeholder="Hash de Transaction">
+			<button type="button" class="btn btn-default" onclick =RequeteApi("https://bitcoin.mubiz.com/transaction/"+Hashtransaction+"/","transachash")>Afficher le resultat</button>
+			</div>
+		</div>			  
+	</form> 
+	
+	<div class="row">
+			<div class="col-lg-12 col-xs-6">
+			<pre>
+				<h3>Resultat du hash de transaction</h3>
+				<code id="transachash" class="json kljs"></code>				
+		   	</pre>
+			</div>
+	</div>
+	
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label for="inputHashbloc" class="col-sm-2 control-label">Hash de Bloc</label>
+			<div class="col-sm-10">
+			<input type="Bloc" class="form-control" id="inputHashbloc" onchange="update_val3()" placeholder="Hash de bloc">
+			<button type="button" class="btn btn-default" onclick =RequeteApi("https://bitcoin.mubiz.com/block_hash/"+Hashbloc+"/","blochash")>Afficher le resultat</button>
+			</div>
+		</div>			  
+	</form> 
+	<div class="row">
+			<div class="col-lg-12 col-xs-6">
+			<pre>
+				<h3>Resultat du hash de bloc</h3>
+				<code id="blochash" class="json kljs"></code>				
+		   	</pre>
+			</div>
+	</div>
+	
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label for="inputIndexbloc" class="col-sm-2 control-label">Index de bloc</label>
+			<div class="col-sm-10">
+			<input type="Index" class="form-control" id="inputIndexbloc" onchange="update_val4()" placeholder="Index de bloc">
+			<button type="button" class="btn btn-default" onclick =RequeteApi("https://bitcoin.mubiz.com/block_index/"+Indexbloc+"/","blockindex")>Afficher le resultat</button>
+			</div>
+		</div>			  
+	</form> 
+	<div class="row">
+			<div class="col-lg-12 col-xs-6">
+			<pre>
+				<h3>Resultat de l index de bloc </h3>
+				<code id="blockindex" class="json kljs"></code>				
+		   	</pre>
+			</div>
+	</div>
+	
+	
 	</body>
 </html>
