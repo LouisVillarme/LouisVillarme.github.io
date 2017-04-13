@@ -3,53 +3,54 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-		<title> QR code Generator </title>						
+		<title> QR Code Generator </title>						
 	</head>
 	<script> 
+		qrcode {
+		    width:160px;
+		    height:160px;
+		    margin-top:15px;
+		}
 		var qrcode = new QRCode("qrcode");
-
-function makeCode () {      
-    var elText = document.getElementById("text");
-    
-    if (!elText.value) {
-        alert("Input a text");
-        elText.focus();
-        return;
-    }
-    
-    qrcode.makeCode(elText.value);
-}
-
-makeCode();
-
-$("#text").
-    on("blur", function () {
-        makeCode();
-    }).
-    on("keydown", function (e) {
-        if (e.keyCode == 13) {
-            makeCode();
-        }
-    });
+		function makeCode () 
+		{
+			var elText = document.getElementById("text");
+			if (!elText.value) {
+				alert("Input a text");
+				elText.focus();
+				return;
+			}
+			
+			qrcode.makeCode(elText.value);
+		}
+		makeCode();
+		$("#text").
+		on("blur", function ()
+		   {
+			makeCode();
+		}).
+		on("keydown", function (e) 
+		   {
+			if (e.keyCode == 13) 
+			{
+				makeCode();
+			}
+		});
 		</script>
 	<body>
 		<h1>Retour Accueil</h1>
 		<a href="https://louisvillarme.github.io/index.html">ACCUEIL</a>
-
+		
+    	
+    	<script type="text/javascript">
+		new QRCode(document.getElementById("qrcode"), "https://louisvillarme.github.io/QRcode.html");
+	</script>
+	
+    <div id="qrcode"></div>
+	<script src = "https://davidshimjs.github.io/qrcodejs/"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="../custom.js"></script>
-    <div id="qrcode"></div>
-    <script src = "https://davidshimjs.github.io/qrcodejs/"></script>
-    <script type="text/javascript">
-	    qrcode {
-		    width:160px;
-		    height:160px;
-		    margin-top:15px;
-	    }
-	    new QRCode(document.getElementById("qrcode"), "https://louisvillarme.github.io/QRcode.html");
-	    
-    </script>
 	</body>
 </html>
 
